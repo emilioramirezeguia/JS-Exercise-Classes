@@ -247,9 +247,29 @@ console.log(elisa.PRAssignment("VueJS"));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor {
+  constructor(attributes) {
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(slackChannel){
+    return `${this.name} announces to ${slackChannel}, @channel sandy times!`;
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
 }
+
+const brit = new ProjectManager({
+  name: "Brit",
+  gradClassName: "Advanced JavaScript",
+  favInstructor: "2pac"
+});
+
+console.log(brit);
+console.log(brit.standUp("#homies"));
+console.log(brit.debugsCode({name: "Paul"}, "JS Objects"));
 
 /*
   STRETCH PROBLEM (no tests!)
